@@ -19,11 +19,12 @@ public class BaseTest {
     protected WebDriver driver = CommonAction.createDriver();
 
     protected BasePage basePage = new BasePage(driver);
-    protected HomePage HomePage = new HomePage(driver);
+    protected HomePage homePage = new HomePage(driver);
+    protected HomePage loginPage = new HomePage(driver);
 
 
 
-    public void FailureScreenshot (String methodName){
+    public void failureScreenshot (String methodName){
         File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         Date d = new Date();
 
