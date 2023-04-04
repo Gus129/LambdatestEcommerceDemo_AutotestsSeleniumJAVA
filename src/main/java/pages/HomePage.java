@@ -14,7 +14,7 @@ public class HomePage extends BasePage {
     public static final String HomePageUrl = "https://ecommerce-playground.lambdatest.io/";
     public static final String HomePageTitle = "Your Store";
 
-    public WebElement homePageLogo() {return driver.findElement(By.xpath("logo xpath here"));}
+    public WebElement homePageLogo() {return driver.findElement(By.xpath("//*[@title='Poco Electro']"));}
 
 
 

@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     public static final String LoginPageUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=account/login";
     public static final String LoginPageTitle = "Account Login";
 
-    public WebElement loginLogo() {return driver.findElement(By.xpath("logo xpath here"));}
+    public WebElement loginLogo() {return driver.findElement(By.xpath("//*[@title='Poco Electro']"));}
 
 
 

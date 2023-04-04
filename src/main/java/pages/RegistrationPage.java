@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.junit.jupiter.api.Assertions;
+import org.testng.Assert;
+
 
 public class RegistrationPage extends BasePage {
 
@@ -15,10 +16,10 @@ public class RegistrationPage extends BasePage {
     public static final String RegistrationPageUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=account/register";
     public static final String RegistrationPageTitle = "Register Account";
 
-    public WebElement registrationLogo() { return driver.findElement(By.xpath("logo xpath here")); }
+    public WebElement registrationLogo() { return driver.findElement(By.xpath("//*[@title='Poco Electro']")); }
 
     public WebElement mainHeading() { return driver.findElement(By.tagName("h1")); }
-    public WebElement mainErrorSummary() { return driver.findElement(By.className("alert-dismissible")); }
+    public WebElement mainErrorSummary() { return driver.findElement(By.className("alert-dismissible")); } //всплывающее окошко с ошибкой когда не проставлена галочка соглашения
 
     public WebElement loginPageLink() { return driver.findElement(By.xpath("//h1/following-sibling::p/a")); }
 
@@ -48,6 +49,59 @@ public class RegistrationPage extends BasePage {
     public WebElement privacyPolicyLink() { return driver.findElement(By.xpath("//a[@class='agree']")); }
 
     public WebElement continueButton() { return driver.findElement(By.xpath("//input[@value='Continue']")); }
+
+    public void openPrivacyPolicy() {
+        privacyPolicyLink().click();
+    }
+
+    public String getErrorMessage(String inputLabel) {  //метод возвращает элемент с выводом текста ошибки - по вводу названия label'a текс инпута вызывающего ошибку
+        String xpathLocator = String.format("//label[text()='%s']//following-sibling::div/div", inputLabel); // локатор икспаса элемента с текстом ошибки, по лейблу
+        return driver.findElement(By.xpath(xpathLocator)).getText();
+    }
+
+    public void assertFirstNameValidation() {  //ассерт на ожидаемый и актуальный текст ошибки
+        String actualError = getErrorMessage("First Name");
+        Assert.assertEquals("First Name must be between 1 and 32 characters!", actualError);
+    }
+
+    public void assertLastNameValidation() {
+        String actualError = getErrorMessage("Last Name");
+        Assert.assertEquals("Last Name must be between 1 and 32 characters!", actualError);
+    }
+
+    public void assertEmailValidation() {
+        String actualError = getErrorMessage("E-Mail");
+        Assert.assertEquals("E-Mail Address does not appear to be valid!", actualError);
+    }
+
+    public void assertTelephoneValidation() {
+        String actualError = getErrorMessage("Telephone");
+        Assert.assertEquals("Telephone must be between 3 and 32 characters!", actualError);
+    }
+
+    public void assertPasswordValidation() {
+        String actualError = getErrorMessage("Password");
+        Assert.assertEquals("Password must be between 4 and 20 characters!", actualError);
+    }
+
+    public void assertPasswordConfirmationMismatchValidation() {
+        String actualError = getErrorMessage("Password Confirm");
+        Assert.assertEquals("Password confirmation does not match password!", actualError);
+    }
+
+    public void assertPrivacyPolicyAgreementValidation() {
+        String actualError = getErrorMessage("Password Confirm");
+        Assert.assertEquals(" Warning: You must agree to the Privacy Policy!", mainErrorSummary().getText());
+    }
+
+    public String getPlaceholder(WebElement element) {   // плейсхолдер текст в полях ввода (когда ничего не введено)
+        return element.getAttribute("placeholder");
+    }
+
+    public void assertPlaceholder(String expectedText, WebElement element) {
+        String actualPlaceHolder = getPlaceholder(element);
+        Assert.assertEquals(expectedText, actualPlaceHolder);
+    }
 
 
 
