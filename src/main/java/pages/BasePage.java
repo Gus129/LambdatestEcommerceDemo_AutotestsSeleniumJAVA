@@ -37,9 +37,25 @@ public class BasePage {
         Assert.assertEquals(pageTitle, driver.getTitle());
     }
 
-    public void verifyField (WebElement fieldName){
+    public void verifyInput(WebElement fieldName){
         Assert.assertTrue(fieldName.isDisplayed());
         System.out.println("Field '"+fieldName.getAttribute("name")+"' verified – Assert passed");
+    }
+
+
+    public void verifyLabel(WebElement fieldName){
+        Assert.assertTrue(fieldName.isDisplayed());
+        System.out.println("Label '"+fieldName.getAttribute("textContent")+"' verified – Assert passed");
+    }
+
+
+    public String getPlaceholder(WebElement element) {   // плейсхолдер текст в полях ввода (когда ничего не введено)
+        return element.getAttribute("placeholder");
+    }
+
+    public void assertPlaceholder(String expectedText, WebElement element) {
+        String actualPlaceHolder = getPlaceholder(element);
+        Assert.assertEquals(expectedText, actualPlaceHolder);
     }
 
     // public void verifyField_isMandatory (WebElement fieldName){ - пока не нужно, но если делать то отдельно для каждого филда

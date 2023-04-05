@@ -5,6 +5,6 @@ public class Config {
 
     public static final int IMPLICIT_WAIT = 8;
     public static final int EXPLICIT_WAIT = 12;
-    public static final String DEFAULT_PASSWORD = "thesecret";
+    public static final String DEFAULT_PASSWORD = "Admin_admin12345";
 
 }

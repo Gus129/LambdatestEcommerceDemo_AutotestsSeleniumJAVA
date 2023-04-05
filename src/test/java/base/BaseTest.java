@@ -20,7 +20,9 @@ public class BaseTest {
 
     protected BasePage basePage = new BasePage(driver);
     protected HomePage homePage = new HomePage(driver);
-    protected HomePage loginPage = new HomePage(driver);
+    protected LoginPage loginPage = new LoginPage(driver);
+    protected RegistrationPage registrationPage = new RegistrationPage(driver);
+    protected AccountSuccessPage accountSuccessPage = new AccountSuccessPage(driver);
 
 
 

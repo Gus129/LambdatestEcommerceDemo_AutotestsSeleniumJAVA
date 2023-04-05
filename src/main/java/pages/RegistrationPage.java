@@ -19,6 +19,7 @@ public class RegistrationPage extends BasePage {
 
     public static final String PrivacyPolicyUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=information/information/agree&information_id=3";
 
+
     public WebElement registrationLogo() { return driver.findElement(By.xpath("//*[@title='Poco Electro']")); }
 
     public WebElement mainHeading() { return driver.findElement(By.tagName("h1")); }
@@ -62,27 +63,27 @@ public class RegistrationPage extends BasePage {
         return driver.findElement(By.xpath(xpathLocator)).getText();
     }
 
-    public void assertFirstNameValidation() {  //ассерт на ожидаемый и актуальный текст ошибки
+    public void assertFirstNameErrorValidation() {  //ассерт на ожидаемый и актуальный текст ошибки
         String actualError = getErrorMessage("First Name");
         Assert.assertEquals("First Name must be between 1 and 32 characters!", actualError);
     }
 
-    public void assertLastNameValidation() {
+    public void assertLastNameErrorValidation() {
         String actualError = getErrorMessage("Last Name");
         Assert.assertEquals("Last Name must be between 1 and 32 characters!", actualError);
     }
 
-    public void assertEmailValidation() {
+    public void assertEmailErrorValidation() {
         String actualError = getErrorMessage("E-Mail");
         Assert.assertEquals("E-Mail Address does not appear to be valid!", actualError);
     }
 
-    public void assertTelephoneValidation() {
+    public void assertTelephoneErrorValidation() {
         String actualError = getErrorMessage("Telephone");
         Assert.assertEquals("Telephone must be between 3 and 32 characters!", actualError);
     }
 
-    public void assertPasswordValidation() {
+    public void assertPasswordErrorValidation() {
         String actualError = getErrorMessage("Password");
         Assert.assertEquals("Password must be between 4 and 20 characters!", actualError);
     }
@@ -92,19 +93,12 @@ public class RegistrationPage extends BasePage {
         Assert.assertEquals("Password confirmation does not match password!", actualError);
     }
 
-    public void assertPrivacyPolicyAgreementValidation() {
+    public void assertPrivacyPolicyAgreementErrorValidation() {
         String actualError = getErrorMessage("Password Confirm");
         Assert.assertEquals(" Warning: You must agree to the Privacy Policy!", mainErrorSummary().getText());
     }
 
-    public String getPlaceholder(WebElement element) {   // плейсхолдер текст в полях ввода (когда ничего не введено)
-        return element.getAttribute("placeholder");
-    }
 
-    public void assertPlaceholder(String expectedText, WebElement element) {
-        String actualPlaceHolder = getPlaceholder(element);
-        Assert.assertEquals(expectedText, actualPlaceHolder);
-    }
 
     public void register(User user, Boolean useEnter) {
         if (!user.getFirstName().isEmpty()) {

@@ -6,7 +6,7 @@
 
             <class name="cases.HomePageTest"></class>
             <class name="cases.LoginPageTest"></class>
-            <class name="cases.RegistrationPageTest"></class>
+            <class name="cases.RegistrationPageUsabilityTests"></class>
 
         </classes>
     </test>
