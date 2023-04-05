@@ -103,6 +103,49 @@ public class RegistrationPage extends BasePage {
         Assert.assertEquals(expectedText, actualPlaceHolder);
     }
 
+    /*  public void register(User user, Boolean useEnter) {     //TODO: этот блок активировать только при регистрации
+        if (!user.getFirstName().isEmpty()) {
+            fistNameInput().sendKeys(user.getFirstName());
+        }
+
+        if (!user.getLastName().isEmpty()) {
+            lastNameInput().sendKeys(user.getLastName());
+        }
+
+        if (!user.getEmail().isEmpty()) {
+            emailInput().sendKeys(user.getEmail());
+        }
+
+        if (!user.getTelephone().isEmpty()) {
+            telephoneInput().sendKeys(user.getTelephone());
+        }
+
+        if (!user.getPassword().isEmpty()) {
+            passwordInput().sendKeys(user.getPassword());
+        }
+
+        if (!user.getPasswordConfirm().isEmpty()) {
+            passwordConfirmInput().sendKeys(user.getPasswordConfirm());
+        }
+
+        if (user.getShouldSubscribe() && !newsletterSubscribeYes().isSelected()) {
+            newsletterSubscribeYes().click();
+        } else if (!user.getShouldSubscribe() && !newsletterSubscribeNo().isSelected()) {
+            newsletterSubscribeNo().click();
+        }
+
+        if (user.getAgreePrivacyPolicy()) {
+           privacyPolicyCheckbox().click();
+        }
+
+        if (useEnter) {
+            continueButton().sendKeys(Keys.ENTER);
+        } else {
+            continueButton().click();
+        }
+    }
+}
+*/
 
 
 
