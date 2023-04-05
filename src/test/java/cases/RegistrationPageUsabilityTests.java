@@ -30,6 +30,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctPrivacyPolicyLinkSet_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.privacyPolicyLink());
         Assert.assertEquals(PrivacyPolicyUrl, registrationPage.privacyPolicyLink().getAttribute("href"));
 
     }
@@ -40,6 +41,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctLoginLinkSet_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.loginPageLink());
         Assert.assertEquals(LoginPageUrl, registrationPage.loginPageLink().getAttribute("href"));
 
     }
@@ -51,6 +53,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void firstNameLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.firstNameLabel());
         basePage.verifyLabel(registrationPage.firstNameLabel());
 
     }
@@ -60,6 +63,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void lastNameLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.lastNameLabel());
         basePage.verifyLabel(registrationPage.lastNameLabel());
 
     }
@@ -70,6 +74,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void emailLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.emailLabel());
         basePage.verifyLabel(registrationPage.emailLabel());
 
     }
@@ -80,6 +85,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void telephoneLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.phoneNumberLabel());
         basePage.verifyLabel(registrationPage.phoneNumberLabel());
 
     }
@@ -90,6 +96,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void passwordLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordLabel());
         basePage.verifyLabel(registrationPage.passwordLabel());
 
     }
@@ -100,6 +107,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void confirmPasswordLabelDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordConfirmLabel());
         basePage.verifyLabel(registrationPage.passwordConfirmLabel());
 
     }
@@ -111,6 +119,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void firstNameInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.firstNameInput());
         basePage.verifyInput(registrationPage.firstNameInput());
 
     }
@@ -120,6 +129,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void lastNameInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.lastNameInput());
         basePage.verifyInput(registrationPage.lastNameInput());
 
     }
@@ -130,6 +140,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void emailInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.emailInput());
         basePage.verifyInput(registrationPage.emailInput());
 
     }
@@ -140,6 +151,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void telephoneInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.phoneNumberInput());
         basePage.verifyInput(registrationPage.phoneNumberInput());
 
     }
@@ -150,6 +162,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void passwordInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordInput());
         basePage.verifyInput(registrationPage.passwordInput());
 
     }
@@ -160,6 +173,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void confirmPasswordInputDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordConfirmInput());
         basePage.verifyInput(registrationPage.passwordConfirmInput());
 
     }
@@ -170,6 +184,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctFirstNamePlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.firstNameInput());
         basePage.assertPlaceholder("First Name", registrationPage.firstNameInput());
 
     }
@@ -180,6 +195,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctLastNamePlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.lastNameInput());
         basePage.assertPlaceholder("Last Name", registrationPage.lastNameInput());
 
     }
@@ -190,6 +206,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctEmailPlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.emailInput());
         basePage.assertPlaceholder("E-Mail", registrationPage.emailInput());
 
     }
@@ -200,6 +217,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctTelephonePlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.phoneNumberInput());
         basePage.assertPlaceholder("Telephone", registrationPage.phoneNumberInput());
 
     }
@@ -210,6 +228,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctPasswordPlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordInput());
         basePage.assertPlaceholder("Password", registrationPage.passwordInput());
 
     }
@@ -220,6 +239,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void correctConfirmPasswordPlaceholderDisplayed_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.passwordConfirmInput());
         basePage.assertPlaceholder("Password Confirm", registrationPage.passwordConfirmInput());
 
     }
@@ -230,6 +250,7 @@ public class RegistrationPageUsabilityTests extends BaseTest{
     public void continueButtonNameCorrectly_when_navigateToRegistrationPage() {
 
         basePage.open(RegistrationPageUrl);
+        basePage.waitElementIsVisible(registrationPage.continueButton());
         Assert.assertEquals("Continue", registrationPage.continueButton().getAttribute("value"));
 
     }
