@@ -1,5 +1,6 @@
 package pages;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,8 @@ public class RegistrationPage extends BasePage {
 
     public static final String RegistrationPageUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=account/register";
     public static final String RegistrationPageTitle = "Register Account";
+
+    public static final String PrivacyPolicyUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=information/information/agree&information_id=3";
 
     public WebElement registrationLogo() { return driver.findElement(By.xpath("//*[@title='Poco Electro']")); }
 
@@ -103,9 +106,9 @@ public class RegistrationPage extends BasePage {
         Assert.assertEquals(expectedText, actualPlaceHolder);
     }
 
-    /*  public void register(User user, Boolean useEnter) {     //TODO: этот блок активировать только при регистрации
+    public void register(User user, Boolean useEnter) {
         if (!user.getFirstName().isEmpty()) {
-            fistNameInput().sendKeys(user.getFirstName());
+            firstNameInput().sendKeys(user.getFirstName());
         }
 
         if (!user.getLastName().isEmpty()) {
@@ -117,7 +120,7 @@ public class RegistrationPage extends BasePage {
         }
 
         if (!user.getTelephone().isEmpty()) {
-            telephoneInput().sendKeys(user.getTelephone());
+            phoneNumberInput().sendKeys(user.getTelephone());
         }
 
         if (!user.getPassword().isEmpty()) {
@@ -144,8 +147,8 @@ public class RegistrationPage extends BasePage {
             continueButton().click();
         }
     }
-}
-*/
+
+
 
 
 
