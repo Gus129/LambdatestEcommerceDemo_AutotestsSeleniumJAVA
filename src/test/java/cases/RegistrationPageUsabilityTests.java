@@ -5,9 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-
-import static pages.LoginPage.LoginPageUrl;
 import static pages.RegistrationPage.*;
+import static pages.LoginPage.LoginPageUrl;
 
 
 

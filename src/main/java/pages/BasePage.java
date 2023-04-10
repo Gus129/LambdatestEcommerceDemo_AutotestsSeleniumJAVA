@@ -30,7 +30,7 @@ public class BasePage {
 
 
     public void open(String url){
-        driver.get(url);
+        driver.navigate().to(url);
     }
 
     public void verifyTitle(String pageTitle){
