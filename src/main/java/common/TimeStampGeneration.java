@@ -3,7 +3,7 @@ package common;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TimeStamp {    // генерация таймстампа для уникальности email адресов (генерируемые цифры таймстампа  добавляются впереди адреса)
+public class TimeStampGeneration {    // генерация таймстампа для уникальности email адресов (генерируемые цифры таймстампа  добавляются впереди адреса)
 
     public static synchronized String getGuid() {
         return java.util.UUID.randomUUID().toString();

@@ -2,6 +2,7 @@ package cases;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
@@ -10,6 +11,7 @@ import static pages.RegistrationPage.*;
 
 
 
+@Listeners(base.Listener.class)
 public class RegistrationPageUsabilityTests extends BaseTest{
 
 
