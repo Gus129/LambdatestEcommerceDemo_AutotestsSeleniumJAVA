@@ -44,8 +44,8 @@ public class RegistrationPage extends BasePage {
     public WebElement passwordConfirmInput() { return driver.findElement(By.id("input-confirm")); }
     public WebElement passwordConfirmLabel() { return driver.findElement(By.xpath("//label[@for='input-confirm']")); }
 
-    public WebElement newsletterSubscribeYes() { return driver.findElement(By.id("input-newsletter-yes")); }
-    public WebElement newsletterSubscribeNo() {  return driver.findElement(By.id("input-newsletter-no"));  }
+    public WebElement newsletterSubscribeYes() { return driver.findElement(By.xpath("//*[@id='content']/form/fieldset[3]/div/div/div[1]/label")); }
+    public WebElement newsletterSubscribeNo() {  return driver.findElement(By.xpath("//*[@id='content']/form/fieldset[3]/div/div/div[2]/label"));  }
 
     public WebElement subscribeLabel() { return driver.findElement(By.xpath("//*[@id='content']/form/fieldset[3]/div/label")); }
 

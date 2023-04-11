@@ -8,12 +8,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 import static pages.RegistrationPage.*;
 import static pages.AccountSuccessPage.*;
+import common.DataProviders;
 
 
 @Listeners(base.Listener.class)
@@ -142,34 +144,24 @@ public class NewRegistrationTests extends BaseTest {
     }
 
 
-    //TODO: как-то имплементировать коды стран использую TestNG (фича ниже только для junit)
-//    @ParameterizedTest(name = "{index}. user created successfully when correct telephone set for country = {0}")
-//    @ValueSource(strings = {
-//            "+9370123456789",
-//            "+358457012345678",
-//            "+3584570123456789",
-//            "+35845701234567890",
-//            "+35567123456789",
-//            "+2135123456789",
-//            "+97335512345678",
-//    })
-//    @Test
-//    public void userCreatedSuccessfully_when_correctTelephoneSetForCountry(String telephone) {
-//        User user = UserFactory.createDefault();
-//        user.setTelephone(telephone);
-//
-//        basePage.open(RegistrationPageUrl);
-//
-//        registrationPage.register(user, false);
-//
-//        accountSuccessPage.assertAccountCreatedSuccessfully();
-//        accountSuccessPage.logOut();
-//    }
+
+    @Test (dataProvider="telephone", dataProviderClass=DataProviders.class)
+    public void userCreatedSuccessfully_when_correctTelephoneSetForCountry(String telephone) {
+        User user = UserFactory.createDefault();
+        user.setTelephone(telephone);
+
+        basePage.open(RegistrationPageUrl);
+
+        registrationPage.register(user, false);
+
+        accountSuccessPage.assertAccountCreatedSuccessfully();
+        accountSuccessPage.logOut();
+    }
 
     @Test
     public void userCreatedSuccessfully_when_telephone32Characters() {
         User user = UserFactory.createDefault();
-        user.setTelephone(StringUtils.repeat("0", 33));
+        user.setTelephone(StringUtils.repeat("9", 32));
 
         basePage.open(RegistrationPageUrl);
 
@@ -208,13 +200,14 @@ public class NewRegistrationTests extends BaseTest {
     }
 
     @Test
-    public void userCreatedSuccessfully_when_newsletterSubscribeTrue() {
+    public void userCreatedSuccessfully_when_newsletterSubscribeTrue()  {
         User user = UserFactory.createDefault();
         user.setShouldSubscribe(true);
 
         basePage.open(RegistrationPageUrl);
 
-        registrationPage.register(user, false);  //TODO: ошибка прои клике радио баттона -element click intercepted - проставить ожидание или какой-то другой способ
+        registrationPage.register(user, false);
+
 
         accountSuccessPage.assertAccountCreatedSuccessfully();
         accountSuccessPage.logOut();
