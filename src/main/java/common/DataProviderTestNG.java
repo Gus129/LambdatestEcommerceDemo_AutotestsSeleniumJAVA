@@ -2,7 +2,7 @@ package common;
 
 import org.testng.annotations.DataProvider;
 
-public class DataProviders {
+public class DataProviderTestNG {
 
     @DataProvider(name="telephone")
     public Object[][] getPhone()

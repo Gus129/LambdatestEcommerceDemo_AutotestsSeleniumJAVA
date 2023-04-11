@@ -2,7 +2,7 @@ package factories;
 
 import com.github.javafaker.Faker;
 import models.User;
-import common.TimeStampGeneration;
+import common.UniqueGeneration;
 
 import static common.Config.*;
 
@@ -17,7 +17,7 @@ public class UserFactory {
     public static User createDefault() {
         User user = new User();
 
-        user.setEmail(TimeStampGeneration.buildUniqueTextByPrefix(faker.internet().safeEmailAddress()));
+        user.setEmail(UniqueGeneration.buildUniqueTextByPrefix(faker.internet().safeEmailAddress()));
         user.setFirstName(faker.name().firstName());
         user.setLastName(faker.name().lastName());
         user.setTelephone(faker.phoneNumber().phoneNumber());

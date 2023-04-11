@@ -5,17 +5,16 @@ import factories.UserFactory;
 
 import models.User;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.util.List;
 
+import static common.UniqueGeneration.buildUniqueCharString;
+import static common.UniqueGeneration.buildUniqueNumberString;
 import static pages.RegistrationPage.*;
-import static pages.AccountSuccessPage.*;
-import common.DataProviders;
+
+import common.DataProviderTestNG;
+
 
 
 @Listeners(base.Listener.class)
@@ -55,7 +54,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_firstName1Character() {
         User user = UserFactory.createDefault();
-        user.setFirstName(StringUtils.repeat("A", 1));
+        user.setFirstName(buildUniqueCharString(1));
 
         basePage.open(RegistrationPageUrl);
 
@@ -68,7 +67,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_firstName32Characters() {
         User user = UserFactory.createDefault();
-        user.setFirstName(StringUtils.repeat("A", 32));
+        user.setFirstName(buildUniqueCharString(32));
 
         basePage.open(RegistrationPageUrl);
 
@@ -81,7 +80,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_lastName1Character() {
         User user = UserFactory.createDefault();
-        user.setLastName(StringUtils.repeat("A", 1));
+        user.setLastName(buildUniqueCharString(1));
 
         basePage.open(RegistrationPageUrl);
 
@@ -94,7 +93,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_lastName32Characters() {
         User user = UserFactory.createDefault();
-        user.setLastName(StringUtils.repeat("A", 32));
+        user.setLastName(buildUniqueCharString(32));
 
         basePage.open(RegistrationPageUrl);
 
@@ -107,7 +106,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_email4Character() {
         User user = UserFactory.createDefault();
-        user.setEmail("z@z.z");                                         //TODO: выдает ошибку что такой уже существует, сделать рандомно?
+        user.setEmail(buildUniqueCharString(1) + "@" + buildUniqueCharString(1) + "." + buildUniqueCharString(1));
 
         basePage.open(RegistrationPageUrl);
 
@@ -120,7 +119,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_email32Characters() {
         User user = UserFactory.createDefault();
-        user.setEmail("z@" + StringUtils.repeat("Z", 26) + ".io");  //TODO: выдает ошибку что такой уже существует, сделать рандомно?
+        user.setEmail(buildUniqueCharString(1) + "@" + buildUniqueCharString(26) + "." + buildUniqueCharString(2));
 
         basePage.open(RegistrationPageUrl);
 
@@ -133,7 +132,7 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_telephone3Character() {
         User user = UserFactory.createDefault();
-        user.setTelephone("123");
+        user.setTelephone(buildUniqueNumberString(3));
 
         basePage.open(RegistrationPageUrl);
 
@@ -145,7 +144,7 @@ public class NewRegistrationTests extends BaseTest {
 
 
 
-    @Test (dataProvider="telephone", dataProviderClass=DataProviders.class)
+    @Test (dataProvider="telephone", dataProviderClass= DataProviderTestNG.class) //повторяет тест N раз в заивисимости от количества значекний в датапровайдере (в данном случае телефон и 7 значений)
     public void userCreatedSuccessfully_when_correctTelephoneSetForCountry(String telephone) {
         User user = UserFactory.createDefault();
         user.setTelephone(telephone);
@@ -161,21 +160,21 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_telephone32Characters() {
         User user = UserFactory.createDefault();
-        user.setTelephone(StringUtils.repeat("9", 32));
+        user.setTelephone(buildUniqueNumberString(32));  // метод по генерации рандом строки состоящий из цифр 0-9 длиной в 32 символа
 
         basePage.open(RegistrationPageUrl);
 
         registrationPage.register(user, false);
 
-        accountSuccessPage.assertAccountCreatedSuccessfully();  //TODO: выдает ошибку что такой уже существует, сделать рандомно?
+        accountSuccessPage.assertAccountCreatedSuccessfully();
         accountSuccessPage.logOut();
     }
 
     @Test
     public void userCreatedSuccessfully_when_password4Character() {
         User user = UserFactory.createDefault();
-        user.setPassword("1234");
-        user.setPasswordConfirm("1234");
+        user.setPassword("7777");
+        user.setPasswordConfirm("7777");
 
         basePage.open(RegistrationPageUrl);
 
@@ -188,8 +187,8 @@ public class NewRegistrationTests extends BaseTest {
     @Test
     public void userCreatedSuccessfully_when_password20Characters() {
         User user = UserFactory.createDefault();
-        user.setPassword(StringUtils.repeat("9", 20));
-        user.setPasswordConfirm(StringUtils.repeat("9", 20));
+        user.setPassword(StringUtils.repeat("2", 20));
+        user.setPasswordConfirm(StringUtils.repeat("2", 20));
 
         basePage.open(RegistrationPageUrl);
 
