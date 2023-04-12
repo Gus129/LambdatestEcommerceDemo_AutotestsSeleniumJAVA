@@ -1,11 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.io.IOException;
 
 public class AccountSuccessPage extends BasePage {
 
@@ -22,17 +25,30 @@ public class AccountSuccessPage extends BasePage {
 
 
 
+
+
     public void assertAccountCreatedSuccessfully() {
 
         Assert.assertEquals(AccountSuccessTitle, mainHeading().getText().trim());
+        System.out.println("Account created successfully as intended");
+
+    }
+
+    public void assertAccountNOTCreated() {
+
+        Assert.assertNotEquals(AccountSuccessTitle, mainHeading().getText().trim());
+        System.out.println("Account is NOT created as intended");
 
     }
 
     public void logOut() {
-
-        Actions action = new Actions(driver);
-        action.moveToElement(MyAccountDropDown()).perform();
-        logoutDropDownOption().click();
+          try {
+            Actions action = new Actions(driver);
+            action.moveToElement(MyAccountDropDown()).perform();
+            logoutDropDownOption().click();
+        } catch (NoSuchElementException e) {
+              System.out.println(e.getMessage());
+          }
     }
 
 }

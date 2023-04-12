@@ -18,7 +18,7 @@ import common.DataProviderTestNG;
 
 
 @Listeners(base.Listener.class)
-public class NewRegistrationTests extends BaseTest {
+public class RegistrationPageCreateAccountTests extends BaseTest {
 
 //    private List<JavascriptException> jsExceptionsList;
 //    private List<String> consoleMessages;

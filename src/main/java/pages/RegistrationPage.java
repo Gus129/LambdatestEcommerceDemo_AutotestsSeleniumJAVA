@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+
 
 public class RegistrationPage extends BasePage {
 
@@ -51,6 +53,7 @@ public class RegistrationPage extends BasePage {
 
     public WebElement privacyPolicyCheckbox() { return driver.findElement(By.xpath("//input[@id='input-agree']/following-sibling::label")); }
     public WebElement privacyPolicyLink() { return driver.findElement(By.xpath("//a[@class='agree']")); }
+    public WebElement privacyPolicyError() { return driver.findElement(By.xpath("//*[@id='account-register']/div[1]")); }
 
     public WebElement continueButton() { return driver.findElement(By.xpath("//input[@value='Continue']")); }
 
@@ -94,9 +97,10 @@ public class RegistrationPage extends BasePage {
     }
 
     public void assertPrivacyPolicyAgreementErrorValidation() {
-        String actualError = getErrorMessage("Password Confirm");
-        Assert.assertEquals(" Warning: You must agree to the Privacy Policy!", mainErrorSummary().getText());
+
+        Assert.assertEquals("Warning: You must agree to the Privacy Policy!", privacyPolicyError().getText());
     }
+
 
 
 

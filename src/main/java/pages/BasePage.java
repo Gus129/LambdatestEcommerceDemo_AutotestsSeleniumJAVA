@@ -23,7 +23,8 @@ public class BasePage {
     public WebElement waitElementIsVisible(WebElement element){
 
         Wait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));
-        wait.until(ExpectedConditions.visibilityOf(element)); // TODO presentsofelement and visibility - по локатору
+        wait.until(ExpectedConditions.visibilityOf(element));
+
         return element;
 
     }
