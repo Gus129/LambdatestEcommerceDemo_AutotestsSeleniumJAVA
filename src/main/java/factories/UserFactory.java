@@ -17,7 +17,7 @@ public class UserFactory {
     public static User createDefault() {
         User user = new User();
 
-        user.setEmail(UniqueGeneration.buildUniqueTextByPrefix(faker.internet().safeEmailAddress()));
+        user.setEmail(UniqueGeneration.buildUniqueText() + faker.internet().safeEmailAddress());
         user.setFirstName(faker.name().firstName());
         user.setLastName(faker.name().lastName());
         user.setTelephone(faker.phoneNumber().phoneNumber());
@@ -25,6 +25,7 @@ public class UserFactory {
         user.setPasswordConfirm(DEFAULT_PASSWORD);
         user.setAgreePrivacyPolicy(true);
         user.setShouldSubscribe(false);
+
         return user;
     }
 }
