@@ -4,7 +4,6 @@ import base.BaseTest;
 import factories.UserFactory;
 
 import models.User;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -17,13 +16,13 @@ import static common.UniqueGeneration.buildUniqueCharString;
 import static common.UniqueGeneration.buildUniqueNumberString;
 import static pages.RegistrationPage.*;
 
-import common.DataProviderTestNG;
-
 import java.util.List;
 
 
 @Listeners(base.Listener.class)
-public class RegistrationPageServerSideValidationTests extends BaseTest {
+public class RegistrationPageClientSideValidationTests extends BaseTest {
+
+
 
     // validations
 

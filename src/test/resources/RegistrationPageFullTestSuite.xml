@@ -5,7 +5,7 @@
         <classes>
 
             <class name="cases.RegistrationPageCreateAccountTests"></class>
-            <class name="cases.RegistrationPageServerSideValidationTests"></class>
+            <class name="cases.RegistrationPageClientSideValidationTests"></class>
             <class name="cases.RegistrationPageUsabilityTests"></class>
 
         </classes>
