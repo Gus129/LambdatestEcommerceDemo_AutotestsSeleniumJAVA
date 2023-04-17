@@ -1,6 +1,6 @@
 package base;
 
-import common.CommonAction;
+import factories.BrowserFactory;
 import pages.*;
 
 import org.apache.commons.io.FileUtils;
@@ -12,11 +12,13 @@ import java.io.IOException;
 import java.util.Date;
 
 
+
+
 public class BaseTest {
 
     // !!!!! Сюда добавляются переменные для каждой новой страницы проекта - загрузка драйвера
 
-    protected WebDriver driver = CommonAction.createDriver();
+    protected WebDriver driver = BrowserFactory.getBrowser("Chrome");
 
     protected BasePage basePage = new BasePage(driver);
     protected HomePage homePage = new HomePage(driver);
@@ -41,9 +43,10 @@ public class BaseTest {
 
 
     @AfterSuite(alwaysRun = true)
-    public void closeBrowser () throws InterruptedException {
+    public void tearDown() throws InterruptedException
+    {
         Thread.sleep(2500); //чтобы увидеть результат визуально :)
-        driver.quit();
+        BrowserFactory.closeAllDriver();
     }
 
 }
