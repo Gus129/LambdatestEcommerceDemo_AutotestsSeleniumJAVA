@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Registration Page Suite">
+    <test verbose="1"  name="Registration Page All Tests">
+        <classes>
+
+            <class name="cases.RegistrationPageCreateAccountTests"></class>
+            <class name="cases.RegistrationPageServerSideValidationTests"></class>
+            <class name="cases.RegistrationPageUsabilityTests"></class>
+
+        </classes>
+    </test>
+</suite>
