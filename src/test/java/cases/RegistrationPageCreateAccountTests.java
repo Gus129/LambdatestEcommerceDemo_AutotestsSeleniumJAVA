@@ -3,6 +3,7 @@ package cases;
 import base.BaseTest;
 import factories.UserFactory;
 
+import listeners.TestCaseListener;
 import models.User;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Listeners;
@@ -17,7 +18,7 @@ import common.DataProviderTestNG;
 
 
 
-@Listeners(base.Listener.class)
+@Listeners(TestCaseListener.class)
 public class RegistrationPageCreateAccountTests extends BaseTest {
 
 

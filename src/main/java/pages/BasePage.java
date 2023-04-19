@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
+
 import java.time.Duration;
 
 import static common.Config.EXPLICIT_WAIT;
@@ -31,6 +33,7 @@ public class BasePage {
 
 
     public void open(String url){
+
         driver.navigate().to(url);
     }
 
@@ -40,13 +43,15 @@ public class BasePage {
 
     public void verifyInput(WebElement fieldName){
         Assert.assertTrue(fieldName.isDisplayed());
-        System.out.println("Field '"+fieldName.getAttribute("name")+"' verified – Assert passed");
+        Reporter.log("Field '"+fieldName.getAttribute("name")+"' is present on the page – verification successful", true);
+        //System.out.println("Field '"+fieldName.getAttribute("name")+"' verified – Assert passed");
     }
 
 
     public void verifyLabel(WebElement fieldName){
         Assert.assertTrue(fieldName.isDisplayed());
-        System.out.println("Label '"+fieldName.getAttribute("textContent")+"' verified – Assert passed");
+        Reporter.log("Label '"+fieldName.getAttribute("textContent")+"' is present on the page – verification successful", true);
+        //System.out.println("Label '"+fieldName.getAttribute("textContent")+"' verified – Assert passed");
     }
 
 
@@ -69,14 +74,18 @@ public class BasePage {
         j.executeScript("return document.readyState")
                 .toString().equals("complete");
         // get the current URL
-        String s = driver.getCurrentUrl();
+        String urlString = driver.getCurrentUrl();
         // checking condition if the URL is loaded
-        if (s.equals(url)) {
-            System.out.println("Page Loaded");
-            System.out.println("Current Url: " + s);
+        if (urlString.equals(url)) {
+            Reporter.log("Correct page loaded, current Url - "+ urlString, true);
+            //System.out.println("Page Loaded");
+            //System.out.println("Current Url: " + s);
         }
         else {
-            fail("Page did not load");
+            Reporter.log("Page did not load / incorrect page loaded, expected Url: "+ url, true);  //TODO: проверить корректно ли логает фейл
+            fail();
+
+
         }
     }
 

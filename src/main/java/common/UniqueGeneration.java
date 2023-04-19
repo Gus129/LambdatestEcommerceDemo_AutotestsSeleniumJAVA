@@ -16,7 +16,7 @@ public class UniqueGeneration {
         RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('0', '9').build();
         String numString = generator.generate(length);
 
-        System.out.println("Generated numbers string: " + numString);
+        //System.out.println("Generated numbers string: " + numString);
 
         return numString;
 
@@ -27,7 +27,7 @@ public class UniqueGeneration {
         RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('a', 'z').build();
         String charString = generator.generate(length);
 
-        System.out.println("Generated chars string: " + charString);
+        //System.out.println("Generated chars string: " + charString);
 
         return charString;
 

@@ -1,6 +1,8 @@
 package base;
 
 import factories.BrowserFactory;
+import org.apache.commons.io.FilenameUtils;
+import org.testng.Reporter;
 import pages.*;
 
 import org.apache.commons.io.FileUtils;
@@ -32,9 +34,10 @@ public class BaseTest {
         File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         Date d = new Date();
 
-        String TimeStamp = d.toString().replace(":", "_").replace(" ", "_");
+        String TimeStampScreenshot = d.toString().replace(":", "_").replace(" ", "_");
         try {
-            FileUtils.copyFile(srcFile, new File ("./screenshots/" + methodName + "_" + TimeStamp + ".png"));
+            FileUtils.copyFile(srcFile, new File ("./screenshots/" + methodName + "_" + TimeStampScreenshot + ".png"));
+            Reporter.log("Failure screenshot is created - " + FilenameUtils.getName(methodName + "_" + TimeStampScreenshot + ".png"), true);
 
         } catch (IOException e){
             e.printStackTrace();

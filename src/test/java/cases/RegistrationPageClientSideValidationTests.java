@@ -3,6 +3,7 @@ package cases;
 import base.BaseTest;
 import factories.UserFactory;
 
+import listeners.TestCaseListener;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ import static pages.RegistrationPage.*;
 import java.util.List;
 
 
-@Listeners(base.Listener.class)
+@Listeners(TestCaseListener.class)
 public class RegistrationPageClientSideValidationTests extends BaseTest {
 
 
@@ -118,9 +119,8 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
         registrationPage.register(user, false);
 
         accountSuccessPage.assertAccountNOTCreated();
-
-
         registrationPage.assertEmailErrorValidation();
+
     }
 
     @Test

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 import java.io.IOException;
 
@@ -30,14 +31,17 @@ public class AccountSuccessPage extends BasePage {
     public void assertAccountCreatedSuccessfully() {
 
         Assert.assertEquals(AccountSuccessTitle, mainHeading().getText().trim());
-        System.out.println("Account created successfully as intended");
+        Reporter.log("Account created successfully as intended", true);
+        //System.out.println("Account created successfully as intended");
 
     }
 
     public void assertAccountNOTCreated() {
 
         Assert.assertNotEquals(AccountSuccessTitle, mainHeading().getText().trim());
-        System.out.println("Account is NOT created as intended");
+        Reporter.log("Account is NOT created as intended", true);
+
+        //System.out.println("Account is NOT created as intended");
 
     }
 
