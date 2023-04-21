@@ -26,15 +26,14 @@ public class BasePage {
 
         Wait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));
         wait.until(ExpectedConditions.visibilityOf(element));
-
         return element;
 
     }
 
-
     public void open(String url){
-
+        Reporter.log("Opening url - "+url, true);
         driver.navigate().to(url);
+
     }
 
     public void verifyTitle(String pageTitle){
@@ -61,7 +60,9 @@ public class BasePage {
 
     public void assertPlaceholder(String expectedText, WebElement element) {
         String actualPlaceHolder = getPlaceholder(element);
+        Reporter.log("Verifying placeholder text at element - '"+element.getAttribute("textContent"+"'" ));
         Assert.assertEquals(expectedText, actualPlaceHolder);
+        Reporter.log("Placeholder verified successfully, expected - '"+expectedText+"', actual - '"+actualPlaceHolder+"'");
     }
 
     // public void verifyField_isMandatory (WebElement fieldName){ - пока не нужно, но если делать то отдельно для каждого филда
@@ -82,7 +83,7 @@ public class BasePage {
             //System.out.println("Current Url: " + s);
         }
         else {
-            Reporter.log("Page did not load / incorrect page loaded, expected Url: "+ url, true);  //TODO: проверить корректно ли логает фейл
+            Reporter.log("Page did not load / incorrect page loaded, expected Url: "+ url, true);  //TODO: логает все в одной строке (в файле тестНГ - сделать чтобы переносило на некст)
             fail();
 
 
@@ -90,12 +91,19 @@ public class BasePage {
     }
 
 
-    public void scrollToBottom (){((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");}  //симуляция скролла в самый НИЗ страницы
+    public void scrollToBottom (){
+        Reporter.log("Scrolling to the BOTTOM of the page",true);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }  //симуляция скролла в самый НИЗ страницы
 
-    public void scrollToTop (){((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");}  //симуляция скролла в самый ВЕРХ странциы
+    public void scrollToTop (){
+        Reporter.log("Scrolling to the TOP of the page",true);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
+    }  //симуляция скролла в самый ВЕРХ странциы
 
 
     public void scrollToElement (WebElement element){    //скролл ДО данного вебэлемента
+        Reporter.log("Scrolling to the element of the page : '"+element.getAttribute("textContent")+"'",true);
         ((JavascriptExecutor) driver).executeScript(
                 "arguments[0].scrollIntoView();", element);
     }
@@ -122,11 +130,13 @@ public class BasePage {
 
     public void assertWebElement_isNOTVisibleInViewport(WebElement element){
         Assert.assertFalse(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is visible");
+        Reporter.log("Element '"+element.getAttribute("textContent")+"' is NOT visible in viewport - assert successful", true);
     }
 
 
     public void assertWebElement_isVisibleInViewport(WebElement element){
         Assert.assertTrue(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is not visible");
+        Reporter.log("Element '"+element.getAttribute("textContent")+"' is visible in viewport - assert successful", true);
     }
 
 

@@ -212,28 +212,7 @@ public class RegistrationPageCreateAccountTests extends BaseTest {
         accountSuccessPage.logOut();
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        System.out.println("###########################");
-//        System.out.println();
-//        // print all JS errors
-//        for (JavascriptException jsException : jsExceptionsList) {
-//            System.out.println("JS exception message: " + jsException.getMessage());
-//            jsException.printStackTrace();
-//            System.out.println();
-//        }
-//
-//        System.out.println("###########################");
-//        System.out.println();
-//        // print all console messages
-//        for (String consoleMessage : consoleMessages) {
-//            System.out.println(consoleMessage);
-//        }
-//
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+
 
 
 

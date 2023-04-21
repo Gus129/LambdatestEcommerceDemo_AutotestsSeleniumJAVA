@@ -5,6 +5,7 @@ import factories.UserFactory;
 
 import listeners.TestCaseListener;
 import models.User;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -44,9 +45,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertPrivacyPolicyAgreementErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertPrivacyPolicyAgreementErrorValidation();
+
     }
 
     @Test
@@ -56,9 +57,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertFirstNameErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertFirstNameErrorValidation();
+
     }
 
     @Test
@@ -68,9 +69,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertFirstNameErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertFirstNameErrorValidation();
+
     }
 
     @Test
@@ -80,9 +81,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertLastNameErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertLastNameErrorValidation();
+
     }
 
     @Test
@@ -92,9 +93,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertLastNameErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertLastNameErrorValidation();
+
     }
 
     @Test
@@ -104,9 +105,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertEmailErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertEmailErrorValidation();
+
 
     }
 
@@ -153,9 +154,9 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertTelephoneErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertTelephoneErrorValidation();
+
     }
 
     @Test
@@ -165,9 +166,49 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
 
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
-
-        registrationPage.assertTelephoneErrorValidation();
         accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertTelephoneErrorValidation();
+
+    }
+
+    @Test
+    public void passwordValidationDisplayed_when_emptyPassword() {
+        User user = UserFactory.createDefault();
+        user.setPassword("");
+        user.setPasswordConfirm("");
+
+        basePage.open(RegistrationPageUrl);
+        registrationPage.register(user, false);
+        accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertPasswordErrorValidation();
+
+    }
+
+    @Test
+    public void passwordValidationDisplayed_when_password21Characters() {  // не выставлены алерты для данного поля при 21+ знаках в поле = тест всегда будет Failed
+        User user = UserFactory.createDefault();
+        user.setPassword(StringUtils.repeat("0", 21));
+        user.setPasswordConfirm(StringUtils.repeat("0", 21));
+
+        basePage.open(RegistrationPageUrl);
+        registrationPage.register(user, false);
+
+        accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertPasswordErrorValidation();
+
+    }
+
+    @Test
+    public void passwordConfirmationValidationDisplayed_when_passwordMismatch() {
+        User user = UserFactory.createDefault();
+        user.setPassword("1234");
+        user.setPasswordConfirm("4321");
+
+        basePage.open(RegistrationPageUrl);
+        registrationPage.register(user, false);
+        accountSuccessPage.assertAccountNOTCreated();
+        registrationPage.assertPasswordConfirmationMismatchValidation();
+
     }
 
     @Test

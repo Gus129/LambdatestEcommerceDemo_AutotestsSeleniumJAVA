@@ -47,10 +47,13 @@ public class AccountSuccessPage extends BasePage {
 
     public void logOut() {
           try {
+              Reporter.log("Trying to log out from account", true);
             Actions action = new Actions(driver);
             action.moveToElement(MyAccountDropDown()).perform();
             logoutDropDownOption().click();
+              Reporter.log("Successfully logged out", true);
         } catch (NoSuchElementException e) {
+              Reporter.log("Can't log out from account", true);
               System.out.println(e.getMessage());
           }
     }
