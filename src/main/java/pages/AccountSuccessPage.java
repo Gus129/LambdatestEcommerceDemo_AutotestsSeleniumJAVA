@@ -30,16 +30,16 @@ public class AccountSuccessPage extends BasePage {
 
     public void assertAccountCreatedSuccessfully() {
 
-        Assert.assertEquals(AccountSuccessTitle, mainHeading().getText().trim());
-        Reporter.log("Account created successfully as intended", true);
+        Assert.assertEquals(AccountSuccessTitle, mainHeading().getText().trim(),"Account should be created");
+        Reporter.log("Account created successfully as intended\n", true);
         //System.out.println("Account created successfully as intended");
 
     }
 
     public void assertAccountNOTCreated() {
 
-        Assert.assertNotEquals(AccountSuccessTitle, mainHeading().getText().trim());
-        Reporter.log("Account is NOT created as intended", true);
+        Assert.assertNotEquals(AccountSuccessTitle, mainHeading().getText().trim(), "Account should not be created \n");
+        Reporter.log("Account is NOT created as intended\n", true);
 
         //System.out.println("Account is NOT created as intended");
 
@@ -47,13 +47,13 @@ public class AccountSuccessPage extends BasePage {
 
     public void logOut() {
           try {
-              Reporter.log("Trying to log out from account", true);
+              Reporter.log("Trying to log out from account\n", true);
             Actions action = new Actions(driver);
             action.moveToElement(MyAccountDropDown()).perform();
             logoutDropDownOption().click();
-              Reporter.log("Successfully logged out", true);
+              Reporter.log("Successfully logged out\n", true);
         } catch (NoSuchElementException e) {
-              Reporter.log("Can't log out from account", true);
+              Reporter.log("Can't log out from account\n", true);
               System.out.println(e.getMessage());
           }
     }

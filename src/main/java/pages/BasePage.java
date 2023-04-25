@@ -23,7 +23,7 @@ public class BasePage {
     }
 
     public WebElement waitElementIsVisible(WebElement element){
-
+        Reporter.log("Waiting WebElement: '"+element.getAttribute("textContent")+"' to be visible");
         Wait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));
         wait.until(ExpectedConditions.visibilityOf(element));
         return element;
@@ -37,18 +37,18 @@ public class BasePage {
     }
 
     public void verifyTitle(String pageTitle){
-        Assert.assertEquals(pageTitle, driver.getTitle());
+        Assert.assertEquals(pageTitle, driver.getTitle(),"Wrong page title\n");
     }
 
-    public void verifyInput(WebElement fieldName){
-        Assert.assertTrue(fieldName.isDisplayed());
-        Reporter.log("Field '"+fieldName.getAttribute("name")+"' is present on the page – verification successful", true);
+    public void verifyInput(WebElement inputName){
+        Assert.assertTrue(inputName.isDisplayed(),"TextInput: '"+inputName.getAttribute("textContent")+"' is NOT present on page\n");
+        Reporter.log("Field '"+inputName.getAttribute("name")+"' is present on the page – verification successful", true);
         //System.out.println("Field '"+fieldName.getAttribute("name")+"' verified – Assert passed");
     }
 
 
     public void verifyLabel(WebElement fieldName){
-        Assert.assertTrue(fieldName.isDisplayed());
+        Assert.assertTrue(fieldName.isDisplayed(),"Label: '"+fieldName.getAttribute("textContent")+"' is NOT present on page\n");
         Reporter.log("Label '"+fieldName.getAttribute("textContent")+"' is present on the page – verification successful", true);
         //System.out.println("Label '"+fieldName.getAttribute("textContent")+"' verified – Assert passed");
     }
@@ -61,14 +61,14 @@ public class BasePage {
     public void assertPlaceholder(String expectedText, WebElement element) {
         String actualPlaceHolder = getPlaceholder(element);
         Reporter.log("Verifying placeholder text at element - '"+element.getAttribute("textContent"+"'" ));
-        Assert.assertEquals(expectedText, actualPlaceHolder);
+        Assert.assertEquals(expectedText, actualPlaceHolder,"Wrong placeholder text for element: '"+element.getAttribute("textContent"+"'")+"\n");
         Reporter.log("Placeholder verified successfully, expected - '"+expectedText+"', actual - '"+actualPlaceHolder+"'");
     }
 
     // public void verifyField_isMandatory (WebElement fieldName){ - пока не нужно, но если делать то отдельно для каждого филда
 
 
-    public void assertPageLoaded(String url){ //TODO поменять на чтото получше, не всегда корректно работает (возможно только на "избранных" сайтах
+    public void assertPageLoaded(String url){
 
         // Javascript executor to return value
         JavascriptExecutor j = (JavascriptExecutor) driver;
@@ -129,24 +129,26 @@ public class BasePage {
 
 
     public void assertWebElement_isNOTVisibleInViewport(WebElement element){
-        Assert.assertFalse(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is visible");
+        Assert.assertFalse(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is visible\n");
         Reporter.log("Element '"+element.getAttribute("textContent")+"' is NOT visible in viewport - assert successful", true);
     }
 
 
     public void assertWebElement_isVisibleInViewport(WebElement element){
-        Assert.assertTrue(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is not visible");
+        Assert.assertTrue(isVisibleInViewport(element),"Fail: WebElement - "+element.getAttribute("textContent")+" is not visible\n");
         Reporter.log("Element '"+element.getAttribute("textContent")+"' is visible in viewport - assert successful", true);
     }
 
 
     public void MouseClickOnElement(WebElement element){   // ХАРД клик мышкой по элементу
+        Reporter.log("Trying to perform HARD click on element: '"+element.getAttribute("textContent")+"' at page", true);
         Actions action = new Actions(driver);
         action.moveToElement(element).click(element).build().perform();
     }
 
 
     public void clickOutside() {          //клик вне активных элементов сайта (пустое место) -  !!!! не на всех сайтах работает корректно
+        Reporter.log("Trying to perform click on blank space at page", true);
         Actions action = new Actions(driver);
         action.moveByOffset(0, 0).click().build().perform();
     }

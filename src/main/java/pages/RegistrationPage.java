@@ -68,37 +68,37 @@ public class RegistrationPage extends BasePage {
 
     public void assertFirstNameErrorValidation() {  //ассерт на ожидаемый и актуальный текст ошибки
         String actualError = getErrorMessage("First Name");
-        Assert.assertEquals("First Name must be between 1 and 32 characters!", actualError);
+        Assert.assertEquals("First Name must be between 1 and 32 characters!", actualError,"Wrong error message displayed for First Name input\n");
     }
 
     public void assertLastNameErrorValidation() {
         String actualError = getErrorMessage("Last Name");
-        Assert.assertEquals("Last Name must be between 1 and 32 characters!", actualError);
+        Assert.assertEquals("Last Name must be between 1 and 32 characters!", actualError,"Wrong error message displayed for Last Name input\n");
     }
 
     public void assertEmailErrorValidation() {
         String actualError = getErrorMessage("E-Mail");
-        Assert.assertEquals("E-Mail Address does not appear to be valid!", actualError);
+        Assert.assertEquals("E-Mail Address does not appear to be valid!", actualError,"Wrong error message displayed for E-mail input\n");
     }
 
     public void assertTelephoneErrorValidation() {
         String actualError = getErrorMessage("Telephone");
-        Assert.assertEquals("Telephone must be between 3 and 32 characters!", actualError);
+        Assert.assertEquals("Telephone must be between 3 and 32 characters!", actualError,"Wrong error message displayed for Telephone number input\n");
     }
 
     public void assertPasswordErrorValidation() {
         String actualError = getErrorMessage("Password");
-        Assert.assertEquals("Password must be between 4 and 20 characters!", actualError);
+        Assert.assertEquals("Password must be between 4 and 20 characters!", actualError,"Wrong error message displayed for Password input\n");
     }
 
     public void assertPasswordConfirmationMismatchValidation() {
         String actualError = getErrorMessage("Password Confirm");
-        Assert.assertEquals("Password confirmation does not match password!", actualError);
+        Assert.assertEquals("Password confirmation does not match password!", actualError,"Wrong error message displayed for Password Confirmation input\n");
     }
 
     public void assertPrivacyPolicyAgreementErrorValidation() {
 
-        Assert.assertEquals("Warning: You must agree to the Privacy Policy!", privacyPolicyError().getText());
+        Assert.assertEquals("Warning: You must agree to the Privacy Policy!", privacyPolicyError().getText(),"Wrong error message displayed when NOT agree to the Privacy Policy\n");
     }
 
 

@@ -143,7 +143,7 @@ public class RegistrationPageClientSideValidationTests extends BaseTest {
         basePage.open(RegistrationPageUrl);
         registrationPage.register(user, false);
         accountSuccessPage.assertAccountNOTCreated();
-        //registrationPage.assertEmailErrorValidation(); - ошибка генерируется в PopUp сообщение с default языком браузера = такой метод не подходит, поэтому просто проверяем прошла ли регистрация или нет TODO: найти способ сделать валидацию по popup ошибке
+        //registrationPage.assertEmailErrorValidation(); - ошибка генерируется в PopUp сообщение с default языком браузера = такой метод не подходит, поэтому просто проверяем прошла ли регистрация или нет
 
     }
 
